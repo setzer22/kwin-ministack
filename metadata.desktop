@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Minimize Stack
+Icon=preferences-system-windows-script-test
+
+X-Plasma-API=declarativescript
+X-Plasma-MainScript=ui/main.qml
+
+X-KDE-PluginInfo-Author=Fabian Homborg
+X-KDE-PluginInfo-Email=FHomborg@gmail.com
+X-KDE-PluginInfo-Name=ministack
+X-KDE-PluginInfo-Version=0.1
+
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-ServiceTypes=KWin/Script
+Type=Service
