@@ -67,3 +67,4 @@ MiniStack.prototype.pop = function() {
 	}
 };
 
+m = new MiniStack();
