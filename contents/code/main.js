@@ -19,7 +19,6 @@ function MiniStack() {
 	this.stack = [];
 	try {
 		var self = this;
-		print("Starting ministack");
 		workspace.clientRemoved.connect(function (client) {
 			self.removeClient(client);
 		});
@@ -35,6 +34,14 @@ function MiniStack() {
 						function () {
 							self.pop();
 						});
+		registerShortcut("Unminimize all minimized clients",
+						 "Unminimize all minimized clients",
+						 "Meta+.",
+						 function () {
+							 for(i = 0; i < self.stack.length; i++) {
+								 self.pop();
+							 }
+						 });
 	} catch(err) {
 		print(err, "in ministack");
 	}
@@ -45,7 +52,6 @@ MiniStack.prototype.addClient = function(client) {
 };
 
 MiniStack.prototype.removeClient = function(client) {
-	print("removeClient");
 	for (i = 0; i < this.stack.length; i++) {
 		if (this.stack[i] == client) {
 			this.stack.splice(i,1);
