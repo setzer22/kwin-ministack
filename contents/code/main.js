@@ -63,6 +63,7 @@ MiniStack.prototype.pop = function() {
 	if (this.stack.length > 0) {
 		var client = this.stack[this.stack.length - 1];
 		client.minimized = false;
+		client.desktop = workspace.currentDesktop;
 	} else {
 	}
 };
