@@ -38,10 +38,33 @@ function MiniStack() {
 						             "MINSTACK: Unminimize all minimized clients",
 						             "Meta+.",
 						             function () {
-							               for(i = 0; i < self.stack.length; i++) {
-								                 self.pop();
-							               }
+                             var screen = workspace.activeScreen;
+                             var desktop = workspace.currentDesktop;
+                             self.stack
+                                 .filter(function(client) {
+                                     return client.desktop == desktop && client.screen == screen;})
+                                 .forEach(function(client) {
+                                     client.minimized = false;
+                                 });
 						             });
+        registerShortcut("MINSTACK: Cycle next minimized client",
+                         "MINSTACK: Cycle next minimized client",
+                         "Meta+E",
+                         function () {
+                             var client = workspace.activeClient;
+                             var desktop = workspace.currentDesktop;
+                             var screen = client.screen;
+
+                             var others = self.stack.filter(function(other) {
+                                 return other != client && other.desktop == desktop && other.screen == screen;
+                             });
+
+                             if (others.length > 0) {
+                                 others[0].minimized = false;
+                                 client.minimized = true;
+                                 workspace.activeClient = others[0];
+                             }
+                         });
         registerShortcut("MINSTACK: Minimize all clients but selected",
                          "MINSTACK: Minimize all clients but selected",
                          "Meta+W",
